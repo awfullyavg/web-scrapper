@@ -10,8 +10,25 @@ results = soup.find(id='ResultsContainer')
 
 job_elements = results.find_all("div", class_="card-content") #This gives back an iterable set of data
 
+
+
 # print(results.prettify)
 
-for job_element in job_elements:
-    print(job_element, end="\n"*4)
+# for job_element in job_elements: #Each Element is a BeautifulSoup Object. Therefor we can use the same methods on it as we did with results.
+#     title_element = job_element.find("h2", class_="title")
+#     company_element = job_element.find("h3", class_="company")
+#     location_element = job_element.find("p", class_="location")
+#     print(title_element)
+#     print(company_element)
+#     print(location_element)
+#     print()
+    # print(job_element, end="\n"*4)
 
+for job_element in job_elements:
+    title_element = job_element.find("h2", class_="title")
+    company_element = job_element.find("h3", class_="company")
+    location_element = job_element.find("p", class_="location")
+    print(title_element.text.strip())
+    print(company_element.text.strip())
+    print(location_element.text.strip())
+    print()
